@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html>
+  <%- include('../../partials/Header')%>
+<body>
+	
+  <%- include('../../partials/Navbar')%>
+  <%- include('../../partials/Sidebar')%>
+
+	<div class="mobile-menu-overlay"></div>
+	<div class="main-container">
+		<div class="pd-ltr-20">
+			<div class="pd-10 card-box mb-10">
+				<div class="clearfix">
+					<div class="pull-left">
+						<h4 class="text-blue h4">ຜັກ/Vegetable</h4>
+					</div>
+					<div class="pull-right">
+						<a href="/vegetable/add" class="btn btn-outline-primary btn-sm scroll-click">ເພີ່ມໃຫມ່</a>
+					</div>
+				</div>
+			</div>
+				<% if(typeof vegetables !== 'undefined'){ %>
+					<div class="pd-5 card-box mb-30">
+						<table class="data-table table nowrap">
+							<thead>
+								<tr>
+									<th class="table-plus datatable-nosort">Image</th>
+									<th>Name</th>
+									<th>Category</th>
+									<th>Description</th>
+									<th>Buy Price</th>
+									<th>Sell Price</th>
+									<th>Created</th>
+									<th class="datatable-nosort">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% vegetables.forEach(function(vegetable){ %>
+									<tr>
+										<td class="table-plus">
+											<% if(vegetable.image == "") { %>
+												<img src="/images/noimage.png" width="60px" height="60px" alt="">
+												<% } else { %>
+												<img src="/frontend/images/vegetable/<%= vegetable._id %>/<%= vegetable.image %>" width="60px" height="60px" alt="">
+											<% }%>
+										</td>
+										<td>
+											<h5 class="font-16"><%= vegetable.code %> <%= vegetable.name %></h5>
+										</td>
+										<td><%= vegetable.category.title %>-<%= vegetable.category.subtitle %></td>
+										<td><%= vegetable.desc %></td>
+										<td><%= vegetable.import_price %> kip</td>
+										<td><%= vegetable.export_price %> kip</td>
+										<td><%= vegetable.createdAt.toLocaleDateString() %></td>
+										<td>
+											<div class="dropdown">
+												<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+													<i class="dw dw-more"></i>
+												</a>
+												<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+													<a class="dropdown-item" href="/vegetable/view/<%= vegetable.id %>"><i class="dw dw-eye"></i> View</a>
+													<a class="dropdown-item" href="/vegetable/edit/<%= vegetable.id %>"><i class="dw dw-edit2"></i> Edit</a>
+													<a class="dropdown-item" href="/vegetable/delete/<%= vegetable.id %>"><i class="dw dw-delete-3"></i> Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+								<% }) %>
+							</tbody>
+						</table>
+					</div>
+					<% }else{ %>
+						<div class="pd-5 card-box mb-30">
+							<table class="data-table table nowrap">
+								<thead>
+									<tr>
+										<th class="table-plus datatable-nosort">Logo</th>
+										<th>Org Name</th>
+										<th>User Name</th>
+										<th>Address</th>
+										<th>City</th>
+										<th>Province</th>
+										<th>Contact</th>
+										<th>Phone</th>
+										<th>Status</th>
+										<th class="datatable-nosort">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+										<tr>
+											<td class="table-plus">
+												<img src="" width="70" height="70" alt="">
+											</td>
+											<td>
+												<h5 class="font-16"></h5>
+											</td>
+											<td>empty...</td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td>
+												<div class="dropdown">
+													<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+														<i class="dw dw-more"></i>
+													</a>
+													<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+														<a class="dropdown-item" href="/supplier/view/"><i class="dw dw-eye"></i> View</a>
+														<a class="dropdown-item" href="/supplier/edit/"><i class="dw dw-edit2"></i> Edit</a>
+														<a class="dropdown-item" href="/supplier/delete/"><i class="dw dw-delete-3"></i> Delete</a>
+													</div>
+												</div>
+											</td>
+										</tr>
+								</tbody>
+							</table>
+						</div>
+				<% } %>
+      <%- include('../../partials/Footer')%>
+		</div>
+	</div>
+	<%- include('../../partials/Script') %>
+</body>
+</html>

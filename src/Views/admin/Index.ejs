@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/Header')%>
+<body>
+	
+  <%- include('../partials/Navbar')%>
+  <%- include('../partials/Sidebar')%>
+
+	<div class="mobile-menu-overlay"></div>
+	<div class="main-container">
+		<div class="pd-ltr-20">
+			<div class="card-box pd-10 height-100-p mb-20">
+				<div class="row align-items-center">
+					<div class="col-md-4">
+						<img src="/backend/images/new_logo.jpg" height="260px" width="260px" alt="">
+					</div>
+					<div class="col-md-8">
+						<h4 class="font-20 weight-500 mb-10 text-capitalize">
+							ຍີ້ນດີຕ່ອນຮັບທ່ານເຂົາມາໃຊ້ບໍລິການ <div class="weight-600 font-30 text-blue">S.A.S Company Limited</div>
+						</h4>
+						<p class="font-18 max-width-600">ສີ່ງດີໆທີພວກເຮົາຈະມອບໃຫ້ທ່ານ ແລະ ເພື່ອສຸຂະພາບຂອງທ່ານ</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xl-3 mb-30">
+					<div class="card-box height-100-p widget-style1">
+						<div class="d-flex flex-wrap align-items-center">
+							<div class="progress-data">
+								<div id="chart"></div>
+							</div>
+							<div class="widget-data">
+								<div class="h4 mb-0">2020</div>
+								<div class="weight-600 font-14">Contact</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 mb-30">
+					<div class="card-box height-100-p widget-style1">
+						<div class="d-flex flex-wrap align-items-center">
+							<div class="progress-data">
+								<div id="chart2"></div>
+							</div>
+							<div class="widget-data">
+								<div class="h4 mb-0">400</div>
+								<div class="weight-600 font-14">Deals</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 mb-30">
+					<div class="card-box height-100-p widget-style1">
+						<div class="d-flex flex-wrap align-items-center">
+							<div class="progress-data">
+								<div id="chart3"></div>
+							</div>
+							<div class="widget-data">
+								<div class="h4 mb-0">350</div>
+								<div class="weight-600 font-14">Campaign</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 mb-30">
+					<div class="card-box height-100-p widget-style1">
+						<div class="d-flex flex-wrap align-items-center">
+							<div class="progress-data">
+								<div id="chart4"></div>
+							</div>
+							<div class="widget-data">
+								<div class="h4 mb-0">65.600.000,00 kip</div>
+								<div class="weight-600 font-14">Worth</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card-box mb-20">
+				<h2 class="h4 pd-20">ປະເພດສີນຄ້າຂອງພວກເຮົາ</h2>
+				<% if(typeof categories !== 'undefined'){ %>
+					<table class="data-table table nowrap">
+						<thead>
+							<tr>
+								<th class="table-plus datatable-nosort">Product</th>
+								<th>Title</th>
+								<th>Sub</th>
+								<th>Description</th>
+								<th>Added Date</th>
+								<th class="datatable-nosort">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% categories.forEach(function(category) { %>
+							<tr>
+								<td class="table-plus">
+									<% if(category.image == "") { %>
+											<img src="/images/noimage.png" width="70px" height="70px" alt="">
+										<% } else { %>
+											<img src="/frontend/images/category/<%= category._id %>/<%= category.image %>" width="70px" height="70px" alt="">
+									<% }%>
+								</td>
+								<td>
+									<h5 class="font-16"><%= category.title %></h5>
+									<%= category.subtitle %>
+								</td>
+								<td><%= category.subtitle %></td>
+								<td><%= category.desc %></td>
+								<td><%= category.createdAt.toLocaleString() %></td>
+								<td>
+									<div class="dropdown">
+										<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+											<i class="dw dw-more"></i>
+										</a>
+										<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+											<a class="dropdown-item" href="/admin/category/products/<%= category.id %>"><i class="dw dw-eye"></i> View Products</a>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<% }) %>
+						</tbody>
+					</table>
+					<% }else{ %>
+						<table class="data-table table nowrap">
+							<thead>
+								<tr>
+									<th class="table-plus datatable-nosort">Product</th>
+									<th>Title</th>
+									<th>Sub</th>
+									<th>Description</th>
+									<th>Total Added</th>
+									<th class="datatable-nosort">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="table-plus">
+										<img src="/backend/vendors/images/product-1.jpg" width="70" height="70" alt="">
+									</td>
+									<td>
+										<h5 class="font-16"></h5>
+									</td>
+									<td>/<td>
+									<td></td>
+									<td></td>
+									<td>
+										<div class="dropdown">
+											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+												<i class="dw dw-more"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+												<a class="dropdown-item" href="#"><i class="dw dw-eye"></i></a>
+												<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i></a>
+												<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i></a>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+				<% } %>
+				
+			</div>
+      <%- include('../partials/Footer')%>
+		</div>
+	</div>
+	<%- include('../partials/Script') %>
+</body>
+</html>

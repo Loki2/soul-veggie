@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<%- include('../../Partials/Header')%>
+<body>
+  <%- include('../../Partials/Navbar')%>
+  <%- include('../../Partials/Sidebar')%>
+
+	<div class="main-container">
+		<div class="pd-ltr-20">
+      				<!-- Form grid Start -->
+				<div class="pd-20 card-box mb-10">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h4 class="text-blue h4">ຟອມປ້ອນຂໍ້ມູນຜູ້ສະຫນອງ</h4>
+						</div>
+						<div class="pull-right">
+							<a href="/supplier" class="btn btn-outline-primary btn-sm scroll-click">ກັບຄືນ</a>
+						</div>
+					</div>
+					<form action="/supplier/add" method="POST" enctype="multipart/form-data">
+						<div class="row">
+							<div class="col-md-3 col-sm-12">
+								<div class="form-group">
+									<label>ຊື່ອົງກອນ/Org Name*</label>
+									<input type="text" name="orgname" id="orgname" class="form-control" placeholder="ບໍລິສັດ..." required>
+								</div>
+							</div>
+              <div class="col-md-3 col-sm-12">
+								<div class="form-group">
+									<label>ຊື່ຜູ້ສະຫນອງ/First Name*</label>
+									<input type="text" name="firstname" id="firstname" class="form-control" placeholder="ຊື່ຜູ້ສະຫນອງ..." required>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-12">
+								<div class="form-group">
+									<label>ນາມສະກຸນ/Last Name*</label>
+									<input type="text" name="lastname" id="lastname" class="form-control" placeholder="ນາມສະກຸນ..." required>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-12">
+								<div class="form-group">
+									<label>ອີເມວ/Eamil*</label>
+									<input type="email" name="email" id="email" class="form-control" placeholder="ອີເມວ..." required>
+								</div>
+							</div>
+              <div class="col-md-12 col-sm-12">
+								<div class="form-group">
+									<label>ຂໍ້ມູນທີຢູ່/Address*</label>
+									<input type="text" name="address" id="address" class="form-control" placeholder="ທີຢູ່ຜູ້ສະຫນອງ..." required>
+								</div>
+							</div>
+              <div class="col-md-3 col-sm-12">
+								<div class="form-group">
+									<label>ເມືອງ/City*</label>
+									<input type="text" name="city" id="city" class="form-control" placeholder="ເມືອງ..." required>
+								</div>
+							</div>
+              <div class="col-md-3 col-sm-12">
+								<div class="form-group">
+									<label>ແຂວງ/Province*</label>
+									<input type="text" name="province" id="province" class="form-control" placeholder="ແຂວງ..." required>
+								</div>
+							</div>
+              <div class="col-md-3 col-sm-12">
+								<div class="form-group">
+									<label>ຂໍ້ມູນຕິດຕໍ່/Contact*</label>
+									<input type="text" name="contact" id="contact" class="form-control" placeholder="ຂໍ້ມູນຕິດຕໍ່..." required>
+								</div>
+							</div>
+              <div class="col-md-3 col-sm-12">
+								<div class="form-group">
+									<label>ເບີໂທລະສັບ/Phone</label>
+									<input type="text" name="phone" id="phone" class="form-control" placeholder="ເບີໂທລະສັບ..." required>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+              <div class="col-md-8 col-sm-12">
+								<div class="form-group">
+									<label>ໂລໂກ້/Logo File</label>
+									<input type="file" name="logoImage" id="formFile" class="form-control" accept="image/jpg, image/jpeg, image/png" required/>
+								</div>
+							</div>
+              <div class="col-md-4 col-sm-12">
+								<div class="form-group">
+									<label>ສະຖານະ/Status*</label>
+									<select class="custom-select2 form-control" name="status" style="width: 100%; height: 35px;">
+										<option value="active">Active</option>
+										<option value="inactive">Inactive</option>
+									</select>
+								</div>
+							</div>
+						</div>
+            <button type="submit" class="btn btn-outline-primary">Submit</button>
+						</div>
+					</form>
+          <div class="collapse collapse-box" id="form-grid-form" >
+						<div class="code-box">
+							<div class="clearfix">
+								<a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left"  data-clipboard-target="#form-grid"><i class="fa fa-clipboard"></i> Copy Code</a>
+								<a href="#form-grid-form" class="btn btn-primary btn-sm pull-right" rel="content-y"  data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide Code</a>
+							</div>
+							<pre>
+								<code class="xml copy-pre" id="form-grid">
+								</code>
+							</pre>
+						</div>
+					</div>
+      <%- include('../../Partials/Footer')%>
+		</div>
+	</div>
+  <%- include('../../Partials/Script') %>
+</body>
+</html>

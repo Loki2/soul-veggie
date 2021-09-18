@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<%- include('../partials/Header')%>
+<body>
+	<%- include('../partials/Navbar')%>
+  <%- include('../partials/iSidebar')%>
+	<div class="mobile-menu-overlay"></div>
+			<div class="main-container">
+				<div class="pd-ltr-20 xs-pd-20-10">
+					<div class="min-height-100px">
+						<div class="page-header">
+							<div class="row">
+								<div class="col-md-6 col-sm-12">
+									<div class="title">
+										<h4>ຫນ້າຂ່າຍສີນຄ້າ</h4>
+									</div>
+								<nav aria-label="breadcrumb" role="navigation">
+									<ol class="breadcrumb">
+											<li class="breadcrumb-item"><a href="/">ຫນ້າຫຼັກ</a></li>
+											<li class="breadcrumb-item active" aria-current="page">ສີນຄ້າມື້ນີ້</li>
+									</ol>
+								</nav>
+							</div>
+						</div>
+					</div>
+					<div class="product-wrap">
+						<% if(typeof myVegetables !== 'undefined') { %>
+							<div class="product-list">
+								<ul class="row">
+									<% myVegetables.forEach(function(veget){ %>
+										<li class="col-lg-3 col-md-9 col-sm-12">
+											<div class="product-box">
+												<div class="producct-img">
+													<% if(veget.vegetable.image == "") { %>
+														<img src="/images/noimage.png" width="60px" height="60px" alt="">
+														<% } else { %>
+															<img src="/frontend/images/vegetable/<%= veget.vegetable._id %>/<%= veget.vegetable.image %>"  alt="">
+													<% }%>													
+												</div>
+												<form action="/my-info/add-card/<%= veget.vegetable.id %>" method="post">
+													<div class="product-caption">
+														<h4><a href="#"><%= veget.vegetable.name %></a></h4>
+														<div class="price">
+															<del>stock: <%= veget.qty %></del><span>	<%= veget.unit %></span><ins>ລາຄາ: <%= parseFloat(veget.price).toFixed(2) %> k</ins>
+															<input type="text" hidden name="userId" value="<%= userId %>">
+															<input type="text" hidden name="price" value="<%= veget.price %>">
+															<input type="text" hidden name="unit" value="<%= veget.unit %>">
+															<input type="text" hidden name="vege" value="<%= veget.id %>">
+														</div>
+															<button type="submit" class="btn btn-outline-primary">ຂາຍສິນຄ້າ</button>
+														</div>
+													</form>                        
+												</div>
+											</li>
+									<% }); %>
+								</ul>
+							</div>
+							<% } else { %>
+								<div class="product-list">
+									<ul class="row">
+										<li class="col-lg-3 col-md-9 col-sm-12">
+											<div class="product-box">
+												<div class="producct-img">
+													<img src="" alt="">
+												</div>
+												<form action="/products/carts/6100c80221f4a9181fb44c67" method="post">
+													<div class="product-caption">
+														<h4><a href="#">Empty Vegetable</a></h4>
+														<div class="price">
+															<del></del><span> </span><ins></ins>
+															<input type="text" hidden name="userId" value="60fbc2c7a685582f34874d83">
+															<input type="text" hidden name="price" value="6000">
+															<input type="text" hidden name="unit" value="ແພັກ">
+														</div>
+															<button type="submit" class="btn btn-outline-primary">ຂາຍສິນຄ້າ</button>
+														</div>
+													</form>                        
+												</div>
+											</li>
+									</ul>
+								</div>
+						<% } %>
+					</div>
+			</div>
+			<%- include('../partials/Footer') %>
+	</div>
+	<%- include('../partials/Script') %>
+</body>
+</html>

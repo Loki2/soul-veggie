@@ -1,0 +1,160 @@
+<div class="header">
+  <div class="header-left">
+    <div class="menu-icon dw dw-menu"></div>
+    <div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
+    <div class="header-search">
+      <form>
+        <div class="form-group mb-0">
+          <i class="dw dw-search2 search-icon"></i>
+          <input type="text" class="form-control search-input" placeholder="Search Here">
+          <div class="dropdown">
+            <a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
+              <i class="ion-arrow-down-c"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <div class="form-group row">
+                <label class="col-sm-12 col-md-2 col-form-label">From</label>
+                <div class="col-sm-12 col-md-10">
+                  <input class="form-control form-control-sm form-control-line" type="text">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-12 col-md-2 col-form-label">To</label>
+                <div class="col-sm-12 col-md-10">
+                  <input class="form-control form-control-sm form-control-line" type="text">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-12 col-md-2 col-form-label">Subject</label>
+                <div class="col-sm-12 col-md-10">
+                  <input class="form-control form-control-sm form-control-line" type="text">
+                </div>
+              </div>
+              <div class="text-right">
+                <button class="btn btn-primary">Search</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="dashboard-setting user-notification">
+      <div class="dropdown">
+        <a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
+          <i class="dw dw-settings2"></i>
+        </a>
+      </div>
+    </div>
+    <div class="user-notification">
+      <div class="dropdown">
+        <a class="dropdown-toggle no-arrow" href="/sale/create-sale" role="button" data-toggle="dropdown">
+          <% if(user.carts !== 'undefined') { %>
+            <i class="icon-copy dw dw-shopping-cart"></i>
+            <span><%= user.carts.length %></span>
+            <% } else { %>
+              <i class="icon-copy dw dw-shopping-cart"></i>
+              <span>0</span>
+          <% } %>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <div class="notification-list mx-h-350 customscroll">
+            <% if(typeof user.carts !== 'undefined') { %>
+              <ul>
+                <% var total = 0; %>
+                <% var totalQty = 0; %>
+                <% user.carts.forEach(function(cart) { %>
+                  <% var sub = parseFloat(cart.price * cart.qty).toFixed(2) %>
+                  <% var qty = cart.qty %>
+                  <% total += +sub %>
+                  <% totalQty += +qty %>
+                  <li>
+                    <a href="#">
+                      <% if(cart.vegetable.image == "") { %>
+												<img src="/images/noimage.png" width="60px" height="60px" alt="">
+												<% } else { %>
+												<img src="/frontend/images/vegetable/<%= cart.vegetable._id %>/<%= cart.vegetable.image %>" width="60px" height="60px" alt="">
+											<% }%>
+                      <h3><%= cart.vegetable.name %></h3>
+                      <p> <%= parseFloat(cart.price).toFixed(2) %> kip X <span><%= qty %></span><br><span>  = </span><span><%= sub %> kip</span></p>
+                    </a>
+                  </li>
+                <% }); %>
+              </ul>
+              <hr>
+              <ul>
+                <li>
+                  <a href="">ລວມທັງຫມົດ: <br>
+                    <img src="/backend/vendors/check.png" alt="">
+                    <h3><%= parseFloat(total).toFixed(2) %> kip</h3>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <form action="/my-info/sales/create-sale/<%= user.id %>" method="post">
+                    <!-- <input type="text" hidden name="userId" value=""> -->
+                    <input type="number" hidden name="totalqty" value="<%= totalQty %>">
+                    <input type="number" hidden name="amount" value="<%= total %>">
+                    <button type="submit" class="btn btn-outline-primary">ກົດທີນີ້ເພຶ່ອຢື່ນຢັນການຂາຍ</button>
+                    </form>
+                  </a>                    
+                </li>
+              </ul>       
+              <% } else { %>
+                <ul>
+                  <li>
+                    <a href="/user/carts/">
+                      <img src="/backend/vendors/check.png" alt="">
+                      <h3>ບໍ່ມີຜັກໃນກະຕ໋າເທື່ອ</h3>
+                      <p>ກະລຸນາກັບໄປໜ້າຜັກແລ້ວກົດປຸ້ມຂາຍ</p>
+                    </a>
+                  </li>
+                </ul>      
+            <% } %>  
+          </div>
+        </div>
+      </div>
+    </div>
+      <% if(typeof user.profiles !== 'undefined') { %>
+        <div class="user-info-dropdown">
+          <div class="dropdown">
+            <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+              <span class="user-icon">
+                <img src="" alt="">
+                <% if(user.profiles.profile == "") { %>
+                  <img src="/images/noimage.png" width="70px" height="70px" alt="">
+                <% } else { %>
+                  <img src="/frontend/images/users/profile/<%= user.profiles._id %>/<%= user.profiles.profile %>" width="70px" height="70px" alt="">
+                <% }%>
+              </span>
+              <span class="user-name">@<%= user.username %></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+              <a class="dropdown-item" href="#"><i class="dw dw-user1"></i> ຂໍ້ມູນສວນຕົວ</a>
+              <a class="dropdown-item" href="#"><i class="dw dw-settings2"></i> Setting</a>
+              <a class="dropdown-item" href="#"><i class="dw dw-help"></i> ຊ່ວຍເຫລືອ</a>
+              <a class="dropdown-item" href="/auth/logout"><i class="dw dw-logout"></i> ອອກຈາກລະບົບ</a>
+            </div>
+          </div>
+        </div>
+        <% } else { %>
+          <div class="user-info-dropdown">
+            <div class="dropdown">
+              <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                <span class="user-icon">
+                  <img src="" alt="">
+                </span>
+                <span class="user-name">@ Username</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                <a class="dropdown-item" href="#"><i class="dw dw-user1"></i> ຂໍ້ມູນສວນຕົວ</a>
+                <a class="dropdown-item" href="#"><i class="dw dw-settings2"></i> Setting</a>
+                <a class="dropdown-item" href="#"><i class="dw dw-help"></i> ຊ່ວຍເຫລືອ</a>
+                <a class="dropdown-item" href="/auth/logout"><i class="dw dw-logout"></i> ອອກຈາກລະບົບ</a>
+              </div>
+            </div>
+          </div>
+      <% }%>
+  </div>
+</div>

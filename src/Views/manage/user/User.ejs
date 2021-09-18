@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<%- include('../../partials/Header')%>
+<body>
+  <%- include('../../partials/Navbar')%>
+  <%- include('../../partials/Sidebar')%>
+
+	<div class="main-container">
+		<div class="pd-ltr-20">
+			<div class="card-box mb-30">
+				<div class="clearfix">
+          <div class="pull-left">
+            <h2 class="h4 pd-20">ຂໍ້ມູນພະນັກງານທັງໝົດ</h2>
+          </div>
+        </div>
+        <% if(typeof users !== 'undefined'){ %>
+          <table class="data-table table nowrap">
+            <thead>
+              <tr>
+                <th>ຊື່</th>
+                <th>ອີເມວ</th>
+                <th>ວັນທີເຂົາຮ່ວມ</th>
+                <th>ສະຖານະ</th>
+                <th class="datatable-nosort">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% users.forEach(function(user){ %>
+              <tr>
+                <td><%= user.username %></td>
+                <td><%= user.email %></td>
+                <td><%= user.createdAt.toLocaleString() %></td>
+                <td><%= user.status %></td>
+                <td>
+                  <div class="dropdown">
+                    <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                      <i class="dw dw-more"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                      <a class="dropdown-item" href="/manage/view/<%= user.id %>"><i class="dw dw-eye"></i> ສີນຄ້າພະນັກງານ</a>
+                   </div>
+                  </div>
+                </td>
+              </tr>
+              <% }); %>
+            </tbody>
+          </table>
+          <% }else{ %>
+            <table class="data-table table nowrap">
+              <thead>
+                <tr>
+                  <th>ຊື່</th>
+                  <th>ອີເມວ</th>
+                  <th>ເບີໂທ</th>
+                  <th>ວັນທີເຂົາຮ່ວມ</th>
+                  <th>ສະຖານະ</th>
+                  <th class="datatable-nosort">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Empty...</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <div class="dropdown">
+                      <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                        <i class="dw dw-more"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                        <a class="dropdown-item" href="/manage/view/"><i class="dw dw-eye"></i> ສີນຄ້າພະນັກງານ</a>
+                     </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        <% } %>
+			</div>
+      <%- include('../../partials/Footer')%>
+		</div>
+	</div>
+  <%- include('../../partials/Script') %>
+</body>
+</html>

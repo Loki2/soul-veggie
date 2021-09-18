@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<%- include('../partials/Header')%>
+<body>
+  <%- include('../partials/Navbar')%>
+  <%- include('../partials/iSidebar')%>
+
+	<div class="main-container">
+		<div class="pd-ltr-20">
+			<div class="card-box mb-30">
+				<div class="clearfix">
+          <div class="pull-left">
+            <h2 class="h4 pd-20">ຂໍ້ມູນການຂາຍ ແລະ ໃບບີນ</h2>
+          </div>
+        </div>
+        <% if(typeof sales !== "undefined") { %>
+          <table class="data-table table nowrap">
+            <thead>
+              <tr>
+                <th>Items</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Paid Status</th>
+                <th class="datatable-nosort">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% sales.forEach(function(sale) { %>
+                <tr>
+                  <td>
+                    <% sale.items.forEach(function(item){ %>
+                      <h6><%= item.vegetable.name %> <span> - Price: <%= item.price %> Kip</span></h6><span>Anount: <%= item.qty %></span>
+                    <% }); %>
+                  </td>
+                  <td><%= parseFloat(sale.amount).toFixed(2)  %> kip</td>
+                  <td><%= sale.createdAt.toLocaleDateString() %></td>
+                  <td><%= sale.isPaid %></td>
+                  <td>
+                    <div class="dropdown">
+                      <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                        <i class="dw dw-more"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                        <a class="dropdown-item" href="/my-info/invoice/<%= sale.id %>"><i class="dw dw-eye"></i> ລາຍລະອຽດໃບບີນ</a>
+                        <a class="dropdown-item" href="/my-info/invoice-mobile/<%= sale.id %>"><i class="dw dw-eye"></i> mobile mode</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <% }); %>
+            </tbody>
+          </table>
+        <% }else { %>
+          <table class="data-table table nowrap">
+            <thead>
+              <tr>
+                <th>Bill ID</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Paid Status</th>
+                <th class="datatable-nosort">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td></td>
+                  <td>ບໍ່ມີຜູ້ໃຊ້ງານ</td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <div class="dropdown">
+                      <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                        <i class="dw dw-more"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                        <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
+                        <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+                        <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+        <% } %>
+			</div>
+      <%- include('../partials/Footer')%>
+		</div>
+	</div>
+  <%- include('../partials/Script') %>
+</body>
+</html>

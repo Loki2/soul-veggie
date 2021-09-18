@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html>
+  <%- include('../../partials/Header')%>
+<body>
+	
+  <%- include('../../partials/Navbar')%>
+  <%- include('../../partials/Sidebar')%>
+
+	<div class="mobile-menu-overlay"></div>
+	<div class="main-container">
+		<div class="pd-ltr-20">
+			<div class="pd-10 card-box mb-10">
+				<div class="clearfix">
+					<div class="pull-left">
+						<h4 class="text-blue h4">ຂໍ້ມູນສະຖ່ານທີ/Market</h4>
+					</div>
+					<div class="pull-right">
+						<a href="/market/add" class="btn btn-outline-primary btn-sm scroll-click">ເພີ່ມໃຫມ່</a>
+					</div>
+				</div>
+			</div>
+				<% if(typeof markets !== 'undefined') { %>
+					<div class="pd-5 card-box mb-30">
+						<table class="data-table table nowrap">
+								<thead>
+									<tr>
+										<th>Village Name</th>
+										<th>Market Name</th>
+										<th>Contact</th>
+										<th>Address</th>
+										<th>City</th>
+										<th>Province</th>
+										<th>Post Code</th>
+										<th>Status</th>
+										<th class="datatable-nosort">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<% markets.forEach(function(market){ %>
+										<tr>
+											<td><%= market.village %></td>
+											<td><%= market.market %></td>
+											<td><%= market.contact %></td>
+											<td><%= market.address %></td>
+											<td><%= market.city %></td>
+											<td><%= market.province %></td>
+											<td><%= market.postcode %></td>
+											<td><%= market.status %></td>
+											<td>
+												<div class="dropdown">
+													<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+														<i class="dw dw-more"></i>
+													</a>
+													<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+														<!-- <a class="dropdown-item" href="/member/view/"><i class="dw dw-eye"></i> View</a> -->
+														<a class="dropdown-item" href="/market/edit/<%= market.id %>"><i class="dw dw-edit2"></i> Edit</a>
+														<a class="dropdown-item" href="/market/delete/<%= market.id %>"><i class="dw dw-delete-3"></i> Delete</a>
+													</div>
+												</div>
+											</td>
+										</tr>
+									<% }) ;%>
+								</tbody>
+							</table>
+						</div>
+					<% } else { %>
+						<div class="pd-5 card-box mb-30">
+							<table class="data-table table nowrap">
+								<thead>
+									<tr>
+										<th>Village Name</th>
+										<th>Market Name</th>
+										<th>Contact</th>
+										<th>Address</th>
+										<th>City</th>
+										<th>Province</th>
+										<th>Status</th>
+										<th class="datatable-nosort">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+										<tr>
+											<td></td>
+											<td>Empty...</td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td>
+												<div class="dropdown">
+													<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+														<i class="dw dw-more"></i>
+													</a>
+													<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+														<a class="dropdown-item" href="/member/view/"><i class="dw dw-eye"></i> View</a>
+														<a class="dropdown-item" href="/member/edit/"><i class="dw dw-edit2"></i> Edit</a>
+														<a class="dropdown-item" href="/member/delete/"><i class="dw dw-delete-3"></i> Delete</a>
+													</div>
+												</div>
+											</td>
+										</tr>
+								</tbody>
+							</table>
+					</div>
+				<% } %>
+      <%- include('../../partials/Footer')%>
+		</div>
+	</div>
+	<%- include('../../partials/Script') %>
+</body>
+</html>

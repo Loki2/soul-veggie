@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<%- include('../../partials/Header')%>
+<body>
+	<%- include('../../partials/Navbar')%>
+  <%- include('../../partials/Sidebar')%>
+
+	<div class="main-container">
+		<div class="pd-ltr-20 xs-pd-20-10">
+			<div class="min-height-10px">
+					<div class="invoice-wrap">
+						<div class="invoice-box">
+							<div class="col-sm-12 invoice-header">
+								<div class="logo text-center">
+									<img src="/vendors/images/deskapp-logo.png" alt="">
+								</div>
+							</div>
+							<div class="row pb-10">
+								<div class="col-md-4 col-sm-12">
+									<img src="/backend/images/new_logo.jpg" width="70" height="70" alt="">
+								</div>
+								<div class="col-md-4 col-sm-15">
+									<h4 class="text-center mb-30 weight-600">INVOICE</h4>
+								</div>
+							</div>							
+							<div class="row pb-30">
+								<div class="col-md-6 col-sm-12">
+									<h5 class="mb-15">ຊື່: <%= username %> </h5>
+									<p class="font-14 mb-5">ວັນທີອອກໃບບີນ: <%= createdAt %> <strong class="weight-600"></strong></p>
+								</div>
+								<div class="col-md-6 col-sm-12">
+									<div class="text-right">
+										<p class="font-14 mb-5">ຊື່ <%= username %></strong></p>
+										<p class="font-14 mb-5">ເຣືອນເລກທີ 128, ຖະຫນົນດອນປ່າໃຫມ່</p>
+										<p class="font-14 mb-5">ບ້ານ ດອນປ່າໃຫມ່, ເມືອງ ສີສັດຕະນາກ</p>
+										<p class="font-14 mb-5">ແຂວງ ນະຄອນຫລວງວຽງຈັນ</p>
+									</div>
+								</div>
+							</div>
+                <div class="invoice-desc pb-30">
+                  <div class="invoice-desc-head clearfix">
+                      <div class="invoice-sub">ຊື່ສີນຄ້າ</div>
+                      <div class="invoice-rate">ລາຄາ</div>
+                      <div class="invoice-hours">ຈຳນວນ</div>
+                      <div class="invoice-subtotal">ລາຄາລວມ</div>
+                    </div>
+                  <div class="invoice-desc-body">
+                    <ul>
+                      <% var total = 0; %>
+                      <% items.forEach(function(item){ %>
+                        <% var sub = item.price * item.qty %>
+                        <% total += +sub %>
+                        <li class="clearfix">
+                          <div class="invoice-sub"><%= item.vegetable.name %></div>
+                          <div class="invoice-rate"><%= item.price %> kip</div>
+                          <div class="invoice-hours"><%= item.qty %></div>
+                          <div class="invoice-subtotal"><span class="weight-600"><%= parseFloat(sub).toFixed(2) %> kip</span></div>
+                        </li>
+                        <% }); %>
+                    </ul>
+                    </div>
+                    <div class="invoice-desc-footer">
+                      <div class="invoice-desc-head clearfix">
+                        <div class="invoice-sub">ຂໍ້ມູນການຈ່າຍ</div>
+                        <div class="invoice-rate">ວັນທີ</div>
+                        <div class="invoice-subtotal">ລວມທັງຫມົດ:</div>
+                      </div>
+                      <div class="invoice-desc-body">
+                        <ul>
+                          <li class="clearfix">
+                            <div class="invoice-sub">
+                              <p class="font-14 mb-5">ຜູ້ຮັບເງີນ: <%= username %> <strong class="weight-600"></strong></p>
+                              <!-- <p class="font-14 mb-5">Code: <strong class="weight-600">4556</strong></p> -->
+                            </div>
+                            <div class="invoice-rate font-12 weight-200">
+                              <span><%= createdAt %></span>
+                            </div>
+                            <div class="invoice-subtotal">
+                              <span class="weight-600 font-24 text-danger"><%= parseFloat(total).toFixed(2) %></span>
+                              <span>kip</span>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                  </div>
+                </div>
+							<h4 class="text-center pb-20">Thank You!!</h4>
+						</div>
+					</div>
+			</div>
+		</div>
+    <%- include('../../partials/Script') %>
+</body>
+</html>

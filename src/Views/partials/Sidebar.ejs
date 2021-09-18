@@ -1,0 +1,162 @@
+<div class="left-side-bar">
+  <div class="brand-logo">
+    <a href="/admin"> Soul | Veggies   
+      <!-- <img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
+      <img src="vendors/images/deskapp-logo-white.svg" alt="" class="light-logo"> -->
+    </a>
+    <div class="close-sidebar" data-toggle="left-sidebar-close">
+      <i class="ion-close-round"></i>
+    </div>
+  </div>
+  <div class="menu-block customscroll">
+    <div class="sidebar-menu">
+      <ul id="accordion-menu">
+        <% if(user.role !== 'ADMIN') { %>
+          <li class="dropdown">
+            <a href="/manage" class="dropdown-toggle">
+              <span class="micon dw dw-house-1"></span><span class="mtext">ຫນ້າຫລັກ</span>
+            </a>
+          </li>
+          <li class="dropdown">
+            <a href="javascript:;" class="dropdown-toggle">
+              <span class="micon dw dw-analytics-21"></span
+              ><span class="mtext">ຈັດການຂໍ້ມູນໜ້າເວບ</span>
+            </a>
+            <ul class="submenu">
+              <li><a href="/manage/blogs">ຂໍ້ມູນຂ່າວສານ</a></li>
+              <li><a href="/manage/banners">ຂໍ້ມູນການໂຄສະນາ</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="javascript:;" class="dropdown-toggle">
+              <span class="micon dw dw-edit-2"></span><span class="mtext">ສຳລັບຜູ້ຈັດການ</span>
+            </a>
+            <ul class="submenu">
+              <li><a href="/manage/seller-vegetable">ກະຈ່າຍສີນຄ້າຂອງພະນັກງານ</a></li>
+              <li><a href="/manage/members">ກະຈ່າຍສີນຄ້າຂອງສະມາຊິກ</a></li>
+              <!-- <li><a href="#">ຜັກໃນສ່າງທັງໝົດນຳເຂົາ</a></li> -->
+              <li><a href="/manage/bads">ເກັບຂໍ້ມູນຜັກເໜົ່າ</a></li>
+              <!-- <li><a href="#">ຜັກສົ່ງຄືນທັງໝົດ</a></li> -->
+              <li><a href="#">ຄູ່ປ໋ອງ ແລະ ໂປຮໂມຊັນ</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="javascript:;" class="dropdown-toggle">
+              <span class="micon dw dw-analytics-211"></span
+              ><span class="mtext">ລາຍງານຕ່າງໆ</span>
+            </a>
+            <ul class="submenu">
+              <li><a href="#">ລາຍງານຍອດຂາຍປະຈຳເດືອນ</a></li>
+              <li><a href="#">ລາຍງານສິນຄ້າຂາຍດີ</a></li>
+            </ul>
+          </li>
+          <li>
+            <div class="dropdown-divider"></div>
+          </li>
+          <li>
+            <div class="sidebar-small-cap">Setting</div>
+          </li>
+          <li>
+            <a href="/user" class="dropdown-toggle no-arrow">
+              <span class="micon dw dw-user"></span>
+              <span class="mtext">ຂໍ້ມູນສ່ວນຕົວ</span>
+            </a>
+          </li>
+          <% } else { %>
+            <li class="dropdown">
+              <a href="/admin" class="dropdown-toggle">
+                <span class="micon dw dw-house-1"></span><span class="mtext">ໝ້າຫຼັກ</span>
+              </a>
+            </li>
+            <li class="dropdown">
+              <a href="javascript:;" class="dropdown-toggle">
+                <span class="micon dw dw-user2"></span><span class="mtext">ຈັດການຂໍ້ມູນພະນັກງານ</span>
+              </a>
+              <ul class="submenu">
+                <li><a href="/admin/employee">ລາຍຊື່ພະນັກງານ</a></li>
+                <li><a href="/market">ຂໍ້ມູນຕະຫຼາດ</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="javascript:;" class="dropdown-toggle">
+                <span class="micon dw dw-paint-palette"></span><span class="mtext">ຂໍ້ມູນຜັກ ແລະ ສີນຄ້າສຳເລັດຮູບ</span>
+              </a>
+              <ul class="submenu">
+                <li><a href="/vegetable">ຂໍ້ມູນຜັກ ແລະ ໝາກໄມ້</a></li>
+                <li><a href="/category">ຂໍ້ມູນປະເພດ</a></li>
+                <li><a href="#">ຜັກໃນສ່າງທັງໝົດນຳເຂົາ</a></li>
+                <li><a href="/admin/sale-items">ຜັກຂາຍອອກທັງໝົດ</a></li>
+                <li><a href="#">ເກັບຂໍ້ມູນຜັກເໜົ່າ</a></li>
+                <li><a href="#">ຜັກສົ່ງຄືນທັງໝົດ</a></li>
+                <li><a href="#">ຄູ່ປ໋ອງ ແລະ ໂປຮໂມຊັນ</a></li>
+                <li><a href="/product">ຜະລິດຕະພັນສຳເລັດຮູບ</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="javascript:;" class="dropdown-toggle">
+                <span class="micon dw dw-analytics-21"></span><span class="mtext">ຂໍ້ມູນຍອດຂາຍ</span>
+              </a>
+              <ul class="submenu">
+                <li><a href="/admin/get-user">ສີນຄ້າຂອງພະນັກງານ</a></li>
+                <li><a href="/admin/sales">ຂໍ້ມູນຍອດຂ່າຍວັນນີ້</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="javascript:;" class="dropdown-toggle">
+                <span class="micon dw dw-analytics-2"></span><span class="mtext">ຂໍ້ມູນລາຍການສັ່ງຊື້</span>
+              </a>
+              <ul class="submenu">
+                <li><a href="/supplier">ຂໍ້ມູນຜູ້ສະໜອງ</a></li>
+                <li><a href="#">ສັ່ງຊື້ຜັກເຂົ້າສະຕັອກ</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="javascript:;" class="dropdown-toggle">
+                <span class="micon dw dw-book-1"></span><span class="mtext">ລະບົບສະມາຊິກ</span>
+              </a>
+              <ul class="submenu">
+                <li><a href="/member">ຂໍ້ມູນສະມາຊິກ</a></li>
+                <li><a href="#">ລູກຄ້າທົ່ວໄປ</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:;" class="dropdown-toggle">
+                <span class="micon dw dw-analytics-211"></span><span class="mtext">ລາຍງານຕ່າງໆ</span>
+              </a>
+              <ul class="submenu">
+                <li><a href="#">ລາຍງານຍອດຂາຍປະຈຳເດືອນ</a></li>
+                <li><a href="#">ລາຍງານສິນຄ້າຂາຍດີ</a></li>
+                <li><a href="#">ລາຍງານຍອດສັ່ງຈອງແມ່ຄ້າ</a></li>
+                <li><a href="#">ລາຍງານຜັກໃນສ່າງ</a></li>
+                <li><a href="#">ລາຍງານຍອດສັ່ງຊື້ເຂົາລະບົບ</a></li>
+              </ul>
+            </li>
+            <li>
+              <div class="dropdown-divider"></div>
+            </li>
+            <li>
+              <div class="sidebar-small-cap">Setting</div>
+            </li>
+            <li>
+              <a href="/user" class="dropdown-toggle no-arrow">
+                <span class="micon dw dw-user"></span>
+                <span class="mtext">ຂໍ້ມູນຜູ້ໃຊ້ງານ</span>
+              </a>
+            </li>
+            <li>
+              <a href="/user/add" class="dropdown-toggle no-arrow">
+                <span class="micon dw dw-add-user"></span><span class="mtext">ສ້າງບັນຊີໃໝ່</span>
+                <!-- <i class="icon-copy dw dw-user"></i> -->
+              </a>
+            </li>  
+          <% } %>
+        <li>
+          <a href="/auth/logout" class="dropdown-toggle no-arrow">
+            <span class="micon dw dw-login"></span><span class="mtext">ອອກຈາກລະບົບ</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="mobile-menu-overlay"></div>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<%- include('../../partials/Header')%>
+<body>
+  <%- include('../../partials/Navbar')%>
+  <%- include('../../partials/Sidebar')%>
+
+  <div class="main-container">
+		<div class="pd-ltr-20 xs-pd-20-10">
+			<div class="min-height-200px">
+				<div class="row">
+					<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-30">
+						<div class="pd-20 card-box height-100-p">
+							<div class="profile-photo">
+								<!-- <a href="modal" data-toggle="modal" data-target="#modal" class="edit-avatar"><i class="fa fa-pencil"></i></a> -->
+								<img src="" alt="" class="avatar-photo">
+								<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered" role="document">
+										<div class="modal-content">
+											<div class="modal-body pd-5">
+												<div class="img-container">
+													<img id="image" src="/vendors/images/photo2.jpg" alt="Picture">
+												</div>
+											</div>
+											<div class="modal-footer">
+												<input type="submit" value="Update" class="btn btn-primary">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<h5 class="text-center h5 mb-0"></h5>
+							<!-- <p class="text-center text-muted font-14">Product Seller</p> -->
+							<div class="profile-info">
+								<h5 class="mb-20 h5 text-blue">Contact Information</h5>
+								<ul>
+									<li>
+										<span>Username:</span>
+										<h3></h3>
+									</li>
+									<li>
+										<span>Email:</span>
+										<p></p>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 mb-30">
+						<div class="card-box height-100-p overflow-hidden">
+							<div class="profile-tab height-100-p">
+								<div class="tab height-100-p">
+									<ul class="nav nav-tabs customtab" role="tablist">
+										<li class="nav-item">
+											<a class="nav-link active" data-toggle="tab" href="#setting" role="tab">Personal Information Form</a>
+										</li>
+									</ul>
+									<div class="tab-content">
+										<!-- Setting Tab start -->
+										<div class="tab-pane fade show active" id="setting" role="tabpanel">
+											<div class="profile-setting">
+												<form action="/user/profile/<%= id %>" method="POST" enctype="multipart/form-data">
+													<input type="text" name="user" id="user" value="<%= id %>" hidden >													
+													<ul class="profile-edit-list row">
+														<div class="col-md-4 col-sm-12">
+															<div class="form-group">
+																<label>ຊື່/Fisrt Name</label>
+																<input type="text" class="form-control" name="firstname" id="firstname" placeholder="ຊື່ເຕັມ..." required>
+															</div>														
+														</div>
+														<div class="col-md-4 col-sm-12">
+															<div class="form-group">
+																<label>ນາມສະກຸນ/Last name</label>
+																<input type="text" class="form-control" name="lastname" id="lastname" placeholder="ນາມສະກຸນ..." required>
+															</div>
+														</div>
+														<div class="col-md-4 col-sm-12">
+															<div class="form-group">
+																<label>ຊື່ຕະຫຼາດ/Market </label>
+																<select class="custom-select2 form-control" name="market" style="width: 100%; height: 35px;">
+																	<% markets.forEach(function(market){ %>
+																		<option value="<%= market.id %>"><%= market.market %></option>
+																	<% }) %>
+																</select>
+															</div>
+														</div>
+														<div class="col-md-4 col-sm-12">
+															<div class="form-group">
+																<label>ວັນເດຶອນປິເກິດ/Birth Date</label>
+																<input type="text" name="dob" id="dob" class="form-control date-picker" placeholder="ວັນເດືອນປີເກິດ..." required>
+															</div>
+														</div>
+														
+														<div class="col-md-4 col-sm-12">
+															<div class="form-group">
+																<label>ຂໍ້ມູນຕິດຕໍ່/Contact ID</label>
+																<input type="text" name="contact" id="contact" class="form-control" placeholder="ຂໍ້ມູນຕິດຕໍ່..." required>
+															</div>
+														</div>
+														<div class="col-md-4 col-sm-12">
+															<div class="form-group">
+																<label>ເບີໂທລະສັບ/Phone Number</label>
+																<input type="text" name="phone" id="phone" class="form-control" placeholder="ເບີໂທລະສັບ" required>
+															</div>
+														</div>
+														<div class="col-md-12 col-sm-12">
+															<div class="form-group">
+																<label>ທີຢູ່ປະຈຸບັນ/Address</label>
+																<textarea class="form-control" name="address" id="address" placeholder="ທີຢູ່ປະຈຸບັນ..." required></textarea>
+															</div>
+														</div>
+														<div class="col-md-3 col-sm-12">
+															<div class="form-group">
+																<label>ເມືອງ/City</label>
+																<input type="text" name="city" id="city" class="form-control" placeholder="ເມືອງ..." required>
+															</div>
+														</div>
+														<div class="col-md-3 col-sm-12">
+															<div class="form-group">
+																<label>ແຂວງ/Province</label>
+																<input type="text" name="province" id="province" class="form-control" placeholder="ແຂວງ..." required>
+															</div>
+														</div>
+														<div class="col-md-3 col-sm-12">
+															<div class="form-group">
+																<label>ເລກບັດປະຈຳຕົວ/Identity</label>
+																<input type="text" name="identity" id="identity" class="form-control" placeholder="ເລກບັດປະຈຳຕົວ..." required>
+															</div>
+														</div>
+														<div class="col-md-3 col-sm-12">
+															<div class="form-group">
+																<label>ຮູບ/Profile</label>
+																<input type="file" name="profileImage" id="formFile" class="form-control" required>
+															</div>
+														</div>
+														<div class="col-md-12 col-sm-12">
+															<div class="form-group">
+																<div class="custom-control custom-checkbox mb-5">
+																	<input type="checkbox" class="custom-control-input" id="customCheck1-1">
+																	<label class="custom-control-label weight-100" for="customCheck1-1">ຕົກລົງຍ້ອມຮັບການປ່ຽນແປ່ງ ຫຼື ບໍ?</label>
+																</div>
+															</div>
+															<div class="form-group mb-0">
+																<button type="submit" class="btn btn-outline-primary">ເພິ່ມຂໍ້ມູນບຸກຄົນ</button>
+															</div>
+														</div>
+													</ul>
+												</form>
+											</div>
+										</div>
+										<!-- Setting Tab End -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+      <%- include('../../partials/Footer')%>
+		</div>
+	</div>
+  <%- include('../../partials/Script') %>
+</body>
+</html>

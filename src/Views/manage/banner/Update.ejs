@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<%- include('../../partials/Header')%>
+<body>
+  <%- include('../../partials/Navbar')%>
+  <%- include('../../partials/Sidebar')%>
+
+	<div class="main-container">
+		<div class="pd-ltr-20">
+      				<!-- Form grid Start -->
+				<div class="pd-20 card-box mb-10">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h4 class="text-blue h4">ແກ້ໄຂຂໍ້ມູນລົງໂຄສະນາ</h4>
+						</div>
+						<div class="pull-right">
+							<a href="/category" class="btn btn-outline-primary btn-sm scroll-click">ກັບຄືນ</a>
+						</div>
+					</div>
+					<form action="/manage/banners/edit/<%= id %>" method="POST" enctype="multipart/form-data">
+						<div class="row">
+							<div class="col-md-3 col-sm-12">
+								<div class="form-group">
+									<label>ຊື່ຫົວຂໍ້/Title Code*</label>
+									<input type="text" name="title" id="title" value="<%= title %>" class="form-control" placeholder="ຊື່ຫົວຂໍ້" required>
+								</div>
+							</div>
+              <div class="col-md-5 col-sm-12">
+								<div class="form-group">
+									<label>ຂໍ້ມູນສະໂລແກ່ນ/Sub Title*</label>
+									<input type="text" name="subtitle" id="subtitle" value="<%= subtitle %>" class="form-control" placeholder="ຂໍ້ມູນສະໂລແກ່ນ" required>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-12">
+								<div class="form-group">
+									<label>ສະຖານະ/Status*</label>
+									<select class="custom-select2 form-control" name="status" style="width: 100%; height: 35px;">
+										<option value="<%= status %>"><%= status %></option>
+										<option disabled>--ເລືອກສະຖານະ--</option>
+                    <option value="active">Active</option>
+										<option value="inactive">Inactive</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-8 col-sm-12">
+								<div class="form-group">
+									<label>ລາຍລະອຽດ/Description*</label>
+									<input type="text" name="desc" id="desc" value="<%= desc %>" class="form-control" placeholder="ລາຍລະອຽດ" required>
+								</div>
+							</div>
+              <div class="col-md-4 col-sm-12">
+								<div class="form-group">
+									<label>ເລືອກຮູບ/File</label>
+									<input type="file" name="bannerImage" id="imgFile" class="form-control" disabled accept="image/jpg, image/jpeg, image/png"/>
+								</div>
+							</div>
+						</div>
+            <button type="submit" class="btn btn-outline-primary">Update</button>
+						</div>
+					</form>
+          <div class="collapse collapse-box" id="form-grid-form" >
+						<div class="code-box">
+							<div class="clearfix">
+								<a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left"  data-clipboard-target="#form-grid"><i class="fa fa-clipboard"></i> Copy Code</a>
+								<a href="#form-grid-form" class="btn btn-primary btn-sm pull-right" rel="content-y"  data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide Code</a>
+							</div>
+							<pre>
+								<code class="xml copy-pre" id="form-grid">
+								</code>
+							</pre>
+						</div>
+					</div>
+      <%- include('../../partials/Footer')%>
+		</div>
+	</div>
+
+
+  <%- include('../../partials/Script') %>
+</body>
+</html>

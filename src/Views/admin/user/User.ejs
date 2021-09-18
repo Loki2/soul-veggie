@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<%- include('../../partials/Header')%>
+<body>
+  <%- include('../../partials/Navbar')%>
+  <%- include('../../partials/Sidebar')%>
+
+	<div class="main-container">
+		<div class="pd-ltr-20">
+			<div class="card-box mb-30">
+				<div class="clearfix">
+          <div class="pull-left">
+            <h2 class="h4 pd-20">ຂໍ້ມູນຜູ້ໃຊ້ທັງຫມົດ</h2>
+          </div>
+        </div>
+        <% if(typeof users !== "undefined") { %>
+          <table class="data-table table nowrap">
+            <thead>
+              <tr>
+                <th>ຊື່ເຂົາລະບົບ</th>
+                <th>ອີເມວ</th>
+                <th>ກົດຜູ້ໃຊ</th>
+                <th>ວັນທີເຂົາຮ່ວມ</th>
+                <th>ສະຖານະ</th>
+                <th class="datatable-nosort">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% users.forEach(function(user) { %>
+                <tr>
+                  <td><%= user.username %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.role %></td>
+                  <td><%= user.createdAt.toLocaleDateString() %></td>
+                  <td><%= user.status %></td>
+                  <td>
+                    <div class="dropdown">
+                      <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                        <i class="dw dw-more"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                        <a class="dropdown-item" href="/admin/user/seller-vegetable/<%= user.id %>"><i class="dw dw-eye"></i> ສີນຄ້າຂອງພະນັກງານ</a>
+                        <a class="dropdown-item" href="/user/profile/<%= user.id %>"><i class="dw dw-eye"></i> Profile</a>
+                        <a class="dropdown-item" href="/user/edit/<%= user.id %>"><i class="dw dw-edit2"></i> Edit</a>
+                        <a class="dropdown-item" href="/user/delete/<%= user.id %>"><i class="dw dw-delete-3"></i> Delete</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <% }); %>
+            </tbody>
+          </table>
+        <% }else { %>
+          <table class="data-table table nowrap">
+            <thead>
+              <tr>
+                <th>ຊື່ເຂົາລະບົບ</th>
+                <th>ອີເມວ</th>
+                <th>ວັນທີເຂົາຮ່ວມ</th>
+                <th>ສະຖານະ</th>
+                <th class="datatable-nosort">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td></td>
+                  <td>ບໍ່ມີຜູ້ໃຊ້ງານ</td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <div class="dropdown">
+                      <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                        <i class="dw dw-more"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                        <a class="dropdown-item" href="/user/view/"><i class="dw dw-eye"></i> View</a>
+                        <a class="dropdown-item" href="/user/edit/"><i class="dw dw-edit2"></i> Edit</a>
+                        <a class="dropdown-item" href="/user/delete/"><i class="dw dw-delete-3"></i> Delete</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+        <% } %>
+			</div>
+      <%- include('../../partials/Footer')%>
+		</div>
+	</div>
+  <%- include('../../partials/Script') %>
+</body>
+</html>

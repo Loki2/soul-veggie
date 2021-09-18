@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<%- include('../../Partials/Header')%>
+<body>
+  <%- include('../../Partials/Navbar')%>
+  <%- include('../../Partials/Sidebar')%>
+
+	<div class="main-container">
+		<%- include('../../Partials/Message')%>
+		<div class="pd-ltr-20">
+      				<!-- Form grid Start -->
+				<div class="pd-20 card-box mb-10">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h4 class="text-blue h4">ຟອມປ້ອນຂໍ້ມູນສຳລັບສ້າງບັນຊີໃຫມ່</h4>
+						</div>
+						<div class="pull-right">
+							<a href="/user" class="btn btn-outline-primary btn-sm scroll-click">ກັບຄືນ</a>
+						</div>
+					</div>
+					<form action="/user/edit/<%= userId %>" method="POST">
+						<div class="row">
+							<div class="col-md-4 col-sm-12">
+								<div class="form-group">
+									<label>ຊື່ຜູ້ໃຊ້*</label>
+									<input type="text" name="username" id="username" value="<%= username %>" disabled class="form-control" placeholder="Username" required>
+								</div>
+							</div>
+              <div class="col-md-4 col-sm-12">
+								<div class="form-group">
+									<label>ອີເມວຜູ້ໃຊ້*</label>
+									<input type="email" name="email" id="email" class="form-control" value="<%= userEmail %>" disabled placeholder="Email" required>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-12">
+								<div class="form-group">
+									<label>ສະຖານະຜູ້ໃຊ້*</label>
+									<select class="custom-select2 form-control" name="status" style="width: 100%; height: 35px;">
+										<option value="active">Active</option>
+										<option value="inactive">Inactive</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 col-sm-12">
+								<div class="form-group">
+									<label>ລະຫັດຜ່ານ*</label>
+									<input type="password" name="password" id="password" disabled class="form-control" placeholder="***************" required>
+								</div>
+							</div>
+              <div class="col-md-6 col-sm-12">
+								<div class="form-group">
+									<label>ເລືອກກົດຜູ້ໃຊ້*</label>
+									<select class="custom-select2 form-control" name="role" style="width: 100%; height: 35px;">
+                    <option value="<%= userRole %>"><%= userRole %></option>
+										<option value="MANAGE">ເລືອກກົດຜູ້ໃຊ້</option>
+                    <option value="ADMIN">ADMIN</option>
+										<option value="MANAGER">MANAGER</option>
+                    <option value="USER">USER</option>
+									</select>
+								</div>
+							</div>
+						</div>
+            <button type="submit" class="btn btn-outline-primary">Submit</button>
+						</div>
+					</form>
+          <div class="collapse collapse-box" id="form-grid-form" >
+						<div class="code-box">
+							<div class="clearfix">
+								<a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left"  data-clipboard-target="#form-grid"><i class="fa fa-clipboard"></i> Copy Code</a>
+								<a href="#form-grid-form" class="btn btn-primary btn-sm pull-right" rel="content-y"  data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide Code</a>
+							</div>
+							<pre>
+								<code class="xml copy-pre" id="form-grid">
+								</code>
+							</pre>
+						</div>
+					</div>
+      <%- include('../../Partials/Footer')%>
+		</div>
+	</div>
+  <%- include('../../Partials/Script') %>
+</body>
+</html>

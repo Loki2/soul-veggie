@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<%- include('../../partials/Header')%>
+<body>
+  <%- include('../../partials/Navbar')%>
+  <%- include('../../partials/Sidebar')%>
+
+	<div class="main-container">
+		<div class="pd-ltr-20">
+      				<!-- Form grid Start -->
+				<div class="pd-20 card-box mb-10">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h4 class="text-blue h4">ຟອມແກ້ໄຂຂໍ້ມູນປະເພດຜັກ</h4>
+						</div>
+						<div class="pull-right">
+							<a href="/category" class="btn btn-outline-primary btn-sm scroll-click">ກັບຄືນ</a>
+						</div>
+					</div>
+					<form action="/category/edit/<%= id %>" method="POST" enctype="multipart/form-data">
+						<div class="row">
+							<div class="col-md-3 col-sm-12">
+								<div class="form-group">
+									<label>ຊື່ປະເພດ/Title Code*</label>
+									<input type="text" name="title" id="title" class="form-control" value="<%= title %>" placeholder="ປະເພດຜັກ" required>
+								</div>
+							</div>
+              <div class="col-md-5 col-sm-12">
+								<div class="form-group">
+									<label>ຂໍ້ມູນປະເພດ/Sub Title*</label>
+									<input type="text" name="subtitle" id="subtitle" class="form-control" value="<%= subtitle %>" placeholder="ຂໍ້ມູນກ່ຽວກັບປະເພດ" required>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-12">
+								<div class="form-group">
+									<label>ສະຖານະ/Status*</label>
+									<select class="custom-select2 form-control" name="status" value="<%= status %>" style="width: 100%; height: 35px;">
+										<option value="active">Active</option>
+										<option value="inactive">Inactive</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-8 col-sm-12">
+								<div class="form-group">
+									<label>ລາຍລະອຽດ/Description*</label>
+									<input type="text" name="desc" id="desc" class="form-control" value="<%= desc %>" placeholder="ລາຍລະອຽດ" required>
+								</div>
+							</div>
+              <div class="col-md-4 col-sm-12">
+								<div class="form-group">
+									<label>ເລືອກຮູບ/File</label>
+									<input type="file" name="cateCover" id="formFile" disabled class="form-control" accept="image/jpg, image/jpeg, image/png" required/>
+								</div>
+							</div>
+						</div>
+            <button type="submit" class="btn btn-outline-primary">Submit</button>
+						</div>
+					</form>
+          <div class="collapse collapse-box" id="form-grid-form" >
+						<div class="code-box">
+							<div class="clearfix">
+								<a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left"  data-clipboard-target="#form-grid"><i class="fa fa-clipboard"></i> Copy Code</a>
+								<a href="#form-grid-form" class="btn btn-primary btn-sm pull-right" rel="content-y"  data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide Code</a>
+							</div>
+							<pre>
+								<code class="xml copy-pre" id="form-grid">
+								</code>
+							</pre>
+						</div>
+					</div>
+      <%- include('../../partials/Footer')%>
+		</div>
+	</div>
+  <%- include('../../partials/Script') %>
+</body>
+</html>

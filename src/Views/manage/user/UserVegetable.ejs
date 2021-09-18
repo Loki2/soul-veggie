@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html>
+  <%- include('../../partials/Header')%>
+<body>
+	
+  <%- include('../../partials/Navbar')%>
+  <%- include('../../partials/Sidebar')%>
+
+	<div class="mobile-menu-overlay"></div>
+	<div class="main-container">
+		<div class="pd-ltr-20">
+			<div class="pd-10 card-box mb-10">
+				<div class="clearfix">
+					<div class="pull-left">
+						<h4 class="text-blue h4">ຜັກ/Vegetable ຂອງ <%= username %></h4>
+					</div>
+					<div class="pull-right">
+						<a href="/manage/user/add/<%= userId %>" class="btn btn-outline-primary btn-sm scroll-click">ເພີ່ມໃຫມ່</a>
+					</div>
+          <!-- <pre><%= vegetables %></pre> -->
+				</div>
+			</div>
+        <% if(typeof vegetables !== 'undefined') { %>
+          <div class="pd-5 card-box mb-30">
+            
+            <table class="data-table table nowrap">
+              <thead>
+                <tr>
+                  <th class="table-plus datatable-nosort">Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Unit</th>
+                <th>Amount</th>
+                <th>Last Updated</th>
+                  <th class="datatable-nosort">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% vegetables.forEach(function(veggie) { %>
+                  <tr>
+                    <td class="table-plus">
+                      <% if(veggie.vegetable.image == "") { %>
+												<img src="/images/noimage.png" width="60px" height="60px" alt="">
+												<% } else { %>
+												<img src="/frontend/images/vegetable/<%= veggie.vegetable._id %>/<%= veggie.vegetable.image %>" width="60px" height="60px" alt="">
+											<% }%>
+                    </td>
+                    <td>
+                      <h5 class="font-16"><%= veggie.vegetable.name %></h5>
+                    </td>
+                    <td><%= veggie.price %> kip</td>
+                    <td><%= veggie.qty %></td>
+                    <td><%= veggie.unit %></td>
+                    <td><%= veggie.anount %> kip</td>
+                    <td><%= veggie.updatedAt.toLocaleString() %></td>
+                    <td>
+                    <div class="dropdown">
+                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                            <i class="dw dw-more"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                          <a class="dropdown-item" href="/manage/user/vegetable/update/<%= veggie.id %>"><i class="dw dw-edit2"></i> Edit</a>
+                          <a class="dropdown-item" href="/manage/user/vegetable/delete/<%= veggie.id %>"><i class="dw dw-delete-3"></i> Delete</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+            </div>
+          <% } else { %>
+            <div class="pd-5 card-box mb-30">
+              <table class="data-table table nowrap">
+                <thead>
+                  <tr>
+                    <th class="table-plus datatable-nosort">Image</th>
+                  <th>Name</th>
+                  <th>Quantity</th>
+                  <th>Unit</th>
+                  <th>Price</th>
+                  <th>Anount</th>
+                  <th>Created</th>
+                    <th class="datatable-nosort">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="table-plus">
+                      <img src="" width="70" height="70" alt="">
+                    </td>
+                  <td>
+                  <h5 class="font-16"></h5>
+                  </td>
+                    <td></td>
+                    <td>empty ...</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    <div class="dropdown">
+                      <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                          <i class="dw dw-more"></i>
+                      </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                          <a class="dropdown-item" href="/vegetable/view/"><i class="dw dw-eye"></i> View</a>
+                          <a class="dropdown-item" href="/vegetable/edit/"><i class="dw dw-edit2"></i> Edit</a>
+                          <a class="dropdown-item" href="/vegetable/delete/"><i class="dw dw-delete-3"></i> Delete</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        <% }%>
+      <%- include('../../partials/Footer')%>
+		</div>
+	</div>
+	<%- include('../../partials/Script') %>
+</body>
+</html>

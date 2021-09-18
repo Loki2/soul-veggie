@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<%- include('../../partials/Header')%>
+<body>
+  <%- include('../../partials/Navbar')%>
+  <%- include('../../partials/Sidebar')%>
+
+	<div class="main-container">
+		<div class="pd-ltr-20">
+      				<!-- Form grid Start -->
+				<div class="pd-20 card-box mb-10">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h4 class="text-blue h4">ຟອມປ້ອນຂໍ້ມູນສະມາຊິກ</h4>
+						</div>
+						<div class="pull-right">
+							<a href="/member" class="btn btn-outline-primary btn-sm scroll-click">ກັບຄືນ</a>
+						</div>
+					</div>
+					<form action="/member/add" method="POST">
+						<div class="row">
+              <div class="col-md-2 col-sm-12">
+								<div class="form-group">
+									<label>ລະຫັດ/Code*</label>
+									<input type="text" name="code" id="code" class="form-control" placeholder="e.g SVM-00XX..." required>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-12">
+								<div class="form-group">
+									<label>ຊື່/First Name*</label>
+									<input type="text" name="firstname" id="firstname" class="form-control" placeholder="ຊື່..." required>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-12">
+								<div class="form-group">
+									<label>ນາມສະກຸນ/Last Name*</label>
+									<input type="text" name="lastname" id="lastname" class="form-control" placeholder="ນາມສະກຸນ..." required>
+								</div>
+							</div>
+              <div class="col-md-2 col-sm-12">
+								<div class="form-group">
+									<label>ເລກບັດປະຈຳຕົວ/Identity ID*</label>
+									<input type="text" name="identity" id="identity" class="form-control" placeholder="ເລກບັດປະຈຳຕົວ..." required>
+								</div>
+							</div>
+              <div class="col-md-12 col-sm-12">
+								<div class="form-group">
+									<label>ຂໍ້ມູນທີຢູ່/Address*</label>
+									<input type="text" name="address" id="address" class="form-control" placeholder="ທີຢູ່ປະຈຸບັນ..." required>
+								</div>
+							</div>
+              <div class="col-md-3 col-sm-12">
+								<div class="form-group">
+									<label>ເມືອງ/City*</label>
+									<input type="text" name="city" id="city" class="form-control" placeholder="ເມືອງ..." required>
+								</div>
+							</div>
+              <div class="col-md-3 col-sm-12">
+								<div class="form-group">
+									<label>ແຂວງ/Province*</label>
+									<input type="text" name="province" id="province" class="form-control" placeholder="ແຂວງ..." required>
+								</div>
+							</div>
+              <div class="col-md-3 col-sm-12">
+								<div class="form-group">
+									<label>ຂໍ້ມູນຕິດຕໍ່/Contact*</label>
+									<input type="text" name="contact" id="contact" class="form-control" placeholder="ຂໍ້ມູນຕິດຕໍ່..." required>
+								</div>
+							</div>
+              <div class="col-md-3 col-sm-12">
+								<div class="form-group">
+									<label>ເບີໂທລະສັບ/Phone</label>
+									<input type="text" name="phone" id="phone" class="form-control" placeholder="ເບີໂທລະສັບ..." required>
+								</div>
+							</div>
+						</div>
+            <button type="submit" class="btn btn-outline-primary">Submit</button>
+						</div>
+					</form>
+          <div class="collapse collapse-box" id="form-grid-form" >
+						<div class="code-box">
+							<div class="clearfix">
+								<a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left"  data-clipboard-target="#form-grid"><i class="fa fa-clipboard"></i> Copy Code</a>
+								<a href="#form-grid-form" class="btn btn-primary btn-sm pull-right" rel="content-y"  data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide Code</a>
+							</div>
+							<pre>
+								<code class="xml copy-pre" id="form-grid">
+								</code>
+							</pre>
+						</div>
+					</div>
+      <%- include('../../partials/Footer')%>
+		</div>
+	</div>
+  <%- include('../../partials/Script') %>
+</body>
+</html>

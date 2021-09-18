@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<%- include('../../partials/Header')%>
+<body>
+	<%- include('../../partials/Navbar')%>
+  <%- include('../../partials/Sidebar')%>
+	<div class="mobile-menu-overlay"></div>
+			<div class="main-container">
+				<div class="pd-ltr-20 xs-pd-20-10">
+					<div class="min-height-100px">
+						<div class="page-header">
+							<div class="row">
+								<div class="col-md-6 col-sm-12">
+									<div class="title">
+										<h4>ຫນ້າສີນຄ້າຕາມແຕ່ປະເພດ</h4>
+									</div>
+								<nav aria-label="breadcrumb" role="navigation">
+									<ol class="breadcrumb">
+											<li class="breadcrumb-item"><a href="/admin">ຫນ້າຫຼັກ</a></li>
+											<li class="breadcrumb-item active" aria-current="page">ສີນຄ້າມື້ນີ້</li>
+									</ol>
+                  <pre></pre>
+								</nav>
+							</div>
+						</div>
+					</div>
+          <% if(typeof vegetables !== 'undefined'){ %>
+            <div class="product-wrap">
+							<div class="product-list">
+								<ul class="row">
+                    <% vegetables.forEach(function(vegetable){ %>
+										<li class="col-lg-3 col-md-9 col-sm-12">
+											<div class="product-box">
+												<div class="producct-img">
+                          <% if(vegetable.image == "") { %>
+														<img src="/images/noimage.png" width="60px" height="60px" alt="">
+														<% } else { %>
+															<img src="/frontend/images/vegetable/<%= vegetable._id %>/<%= vegetable.image %>"  alt="">
+													<% }%>								
+												</div>
+													<div class="product-caption">
+														<h4><a href="#"><%= vegetable.name %></a></h4>
+														<div class="price">
+															<del>stock: </del><span>	</span><ins>ລາຄາ: <%= vegetable.export_price %>  k</ins>
+														</div>
+															<button type="submit" class="btn btn-outline-primary">ຂາຍສິນຄ້າ</button>
+														</div>                      
+												</div>
+											</li>
+                      <% }) %>
+								  </ul>
+							</div>
+            <% }else{ %>
+              <div class="product-wrap">
+                <div class="product-list">
+                  <ul class="row">
+                      <li class="col-lg-3 col-md-9 col-sm-12">
+                        <div class="product-box">
+                          <div class="producct-img">
+                                                  
+                          </div>
+                          <form action="/my-info/add-card/" method="post">
+                            <div class="product-caption">
+                              <h4><a href="#">Empty ...</a></h4>
+                              <div class="price">
+                                <del>stock: </del><span>	</span><ins>ລາຄາ:  k</ins>
+                              </div>
+                                <button type="submit" class="btn btn-outline-primary">ຂາຍສິນຄ້າ</button>
+                              </div>
+                            </form>                        
+                          </div>
+                        </li>
+                  </ul>
+                </div>
+          <% } %>						
+					</div>
+			</div>
+			<%- include('../../partials/Footer') %>
+	</div>
+	<%- include('../../partials/Script') %>
+</body>
+</html>

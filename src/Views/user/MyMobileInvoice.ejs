@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/Header')%>
+<body>
+  <%- include('../partials/Navbar')%>
+  <%- include('../partials/iSidebar')%>
+
+	<div class="main-container">
+		<div class="pd-ltr-20 xs-pd-20-10">
+			<div class="min-height-200px">
+				<div class="row clearfix">
+					<div class="col-lg-4 col-md-8 col-sm-12 mb-30">
+						<div class="card card-box">
+              <div class="card-body">
+                <img class="card-img-top" src="/backend/images/new_logo.jpg" height="260px" width="260px" alt="Card image cap"><br>
+                <p>Seller: <b><%= firstname %> </b>, Date: <b><%= created %></b></p>
+                <p>Address: <b>ເຣືອນເລກທີ 128, ຖະຫນົນດອນປ່າໃຫມ່</b> <br> <b>ບ້ານ ດອນປ່າໃຫມ່, ເມືອງ ສີສັດຕະນາກ</b> <br> <b>ແຂວງ ນະຄອນຫລວງວຽງຈັນ</b></p>
+              </div>
+							
+							<div class="card-body">
+								<h5 class="card-title weight-500">Invoice</h5>
+								<p class="card-text">ID: #<%= invoiceId %></p>
+							</div>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item">List Items:</li>
+							</ul>
+              <ul class="list-group list-group-flush">
+                <% var total = 0; %>
+                <% items.forEach(function(item) { %>
+                  <% var sub = item.price * item.qty %>
+                  <% total += +sub %>
+                  <li class="list-group-item">
+                    - <%= item.vegetable.name %> : 
+                    <span><b><%= item.price %> kip</b></span>
+                    <span><b>X </b></span>
+                    <span><b><%= item.qty %></b></span>
+                    <span><b> = <%= parseFloat(sub).toFixed(2) %> kip</b></span>
+                  </li>
+                <% }); %>
+							</ul>
+              <ul class="list-group list-group-flush">
+								<li class="list-group-item">Total Amount: <strong><%= parseFloat(total).toFixed(2) %> kip</strong></li>
+							</ul>
+              <div class="card-footer text-muted">
+                <a href="#" class="btn btn-outline-primary">Print</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  <%- include('../partials/Script') %>
+</body>
+</html>
