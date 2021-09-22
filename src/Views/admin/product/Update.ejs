@@ -95,7 +95,12 @@
               <div class="col-md-8 col-sm-12">
 								<div class="form-group">
 									<label>ຮູບພາບ/Image</label>
-									<img src="data:image/<%= image.contentType %>;base64, <%= image.data.toString('base64') %>" width="65px" height="65px" alt="">
+									<% if(image == "") { %>
+										<img src="/images/noimage.png" width="70px" height="70px" alt="">
+									<% } else { %>
+										<img src="/frontend/images/product/<%= productId %>/<%= image %>" alt="" width="65px" height="65px">
+									<% }%>
+									
 								</div>
 							</div>
 						</div>

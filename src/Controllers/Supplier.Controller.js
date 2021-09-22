@@ -6,10 +6,9 @@ module.exports.get_allSupplier = async (req, res, next) => {
     
     const suppliers = await Supplier.find({}).sort({ createdAt: 'desc'});
     // const user = req.locals.user;
-    // console.log("user", user)
+    console.log("user", suppliers)
     res.render('admin/supplier/Supplier', {
       suppliers: suppliers
-
     })
   } catch (error) {
     next(error)
@@ -75,7 +74,7 @@ module.exports.get_supplierById = async (req, res, next) => {
     // console.log(supplier)
 
     res.render('admin/supplier/View', {
-      profile: supplier.logoUrl,
+      profile: supplier.logo,
       orgname: supplier.orgname,
       contact: supplier.contact,
       email: supplier.email,
@@ -84,8 +83,8 @@ module.exports.get_supplierById = async (req, res, next) => {
       firstname: supplier.firstname,
       lastname: supplier.lastname,
       phone: supplier.phone,
-      address: supplier.address
-
+      address: supplier.address,
+      id: supplier._id
     })
   } catch (error) {
     next(error);
@@ -98,7 +97,10 @@ module.exports.get_updateSupplier = async (req, res, next) => {
 
     const supplier = await Supplier.findById(id);
 
+    // console.log("supplier", supplier.logo)
+
     res.render('admin/supplier/Update', {
+      logo: supplier.logo,
       orgname: supplier.orgname,
       firstname: supplier.firstname,
       lastname: supplier.lastname,
@@ -109,7 +111,6 @@ module.exports.get_updateSupplier = async (req, res, next) => {
       contact: supplier.contact,
       phone: supplier.phone,
       status: supplier.status,
-      profile: supplier.logoUrl,
       id: supplier.id
     });
   } catch (error) {

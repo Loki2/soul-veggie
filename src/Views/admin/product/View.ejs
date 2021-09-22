@@ -24,7 +24,11 @@
                   <div class="col-lg-6 col-md-12 col-sm-12">
                     <div class="product-slider slider-arrow">
                       <div class="product-slide">
-                        <img src="data:image/<%= product.imageUrl.contentType %>;base64, <%= product.imageUrl.data.toString('base64') %>" alt="" height="480px" width="480px">
+                        <% if(image == "") { %>
+                          <img src="/images/noimage.png" width="70px" height="70px" alt="">
+                        <% } else { %>
+                          <img src="/frontend/images/product/<%= productId %>/<%= image %>" alt="" height="480px" width="480px">
+                        <% }%>
                       </div>
                     </div>
                   </div>

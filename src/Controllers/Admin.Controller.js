@@ -3,14 +3,22 @@ const User = require("../Models/User");
 const Sale = require('../Models/Sale');
 const Category = require('../Models/Category');
 const SaleItem = require('../Models/SaleItem');
+const Vegetable = require('../Models/Vegetable');
+const Supplier = require('../Models/Supplier');
+const Member = require('../Models/Member');
 
 module.exports.get_admin = async (req, res, next) => {
   try {
     const categories = await Category.find({}).populate({ path: 'vegetables'}).populate({ path: 'products'}).sort({ createAt: -1 });
-
+    const vegetables = await Vegetable.find({}).populate({ path: 'category'}).sort({ createdAt: -1 });
+    const suppliers = await Supplier.find({}).sort({ createdAt: -1 });
+    const members = await Member.find({}).sort({ createdAt: -1 });
     // console.log("admin categories:", categories)
     res.render('admin/Index', {
-      categories: categories
+      categories: categories,
+      vegetables: vegetables,
+      suppliers: suppliers,
+      members: members
     })
   } catch (error) {
     next(error)

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-<%- include('../../Partials/Header')%>
+<%- include('../../partials/Header')%>
 <body>
-  <%- include('../../Partials/Navbar')%>
-  <%- include('../../Partials/Sidebar')%>
+  <%- include('../../partials/Navbar')%>
+  <%- include('../../partials/Sidebar')%>
 
 	<div class="main-container">
 		<div class="pd-ltr-20">
@@ -78,7 +78,11 @@
               <div class="col-md-8 col-sm-12">
 								<div class="form-group">
 									<label>ໂລໂກ້/Logo File</label>
-									<img src="data:image/<%= profile.contentType %>;base64, <%= profile.data.toString('base64') %>" width="85px" height="85px" alt="">
+									<% if(logo == "") { %>
+										<img src="/images/noimage.png" width="70px" height="70px" alt="">
+									<% } else { %>
+										<img src="/frontend/images/supplier/<%= id %>/<%= logo %>" alt="" width="68px" height="68px" class="avatar-photo">
+									<% }%>
 								</div>
 							</div>
               <div class="col-md-4 col-sm-12">
@@ -106,9 +110,9 @@
 							</pre>
 						</div>
 					</div>
-      <%- include('../../Partials/Footer')%>
+      <%- include('../../partials/Footer')%>
 		</div>
 	</div>
-  <%- include('../../Partials/Script') %>
+  <%- include('../../partials/Script') %>
 </body>
 </html>

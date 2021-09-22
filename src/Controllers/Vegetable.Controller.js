@@ -108,12 +108,14 @@ module.exports.get_VegetableId = async (req, res, next) => {
 
     const vegetable = await Vegetable.findById(id).populate({ path: 'category' });
 
-    qr.toDataURL(`http://localhost:5000/vegetable/view/${id}`, (err, src) => {
+    console.log("vegetable:", vegetable)
+    qr.toDataURL(`https://soul-veggie.info/vegetable/view/${id}`, (err, src) => {
       if(err) console.log(err);
       res.render('admin/vegetable/View', {
         vegetable: vegetable,
         src:src,
-        vegetableId: id
+        image: vegetable.image,
+        vegetableId: vegetable._id
       })
     })    
   } catch (error) {
@@ -138,12 +140,12 @@ module.exports.get_updateVegetable = async(req, res, next) => {
       import_unit: vegetable.import_unit,
       export_price: vegetable.export_price,
       export_unit: vegetable.export_unit,
-      image: vegetable.imageUrl,
+      image: vegetable.image,
       title: vegetable.category.title,
       category: vegetable.category.subtitle,
       categoryId: vegetable.category.id,
       status: vegetable.status,
-      id: vegetable.id,
+      id: vegetable._id,
       categories: categories
     })
 

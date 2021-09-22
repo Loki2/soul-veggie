@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 <html>
-  <%- include('../../Partials/Header')%>
+  <%- include('../../partials/Header')%>
 <body>
-  <%- include('../../Partials/Navbar')%>
-  <%- include('../../Partials/Sidebar')%>
+  <%- include('../../partials/Navbar')%>
+  <%- include('../../partials/Sidebar')%>
 	<div class="mobile-menu-overlay"></div>
 
 	<div class="main-container">
@@ -18,7 +18,7 @@
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+									<li class="breadcrumb-item"><a href="/admin">Home</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Supplier</li>
 								</ol>
 							</nav>
@@ -30,7 +30,11 @@
 						<div class="pd-20 card-box height-100-p">
 							<div class="profile-photo">
 								<a href="modal" data-toggle="modal" data-target="#modal" class="edit-avatar"><i class="fa fa-pencil"></i></a>
-								<img src="data:image/<%= profile.contentType %>;base64, <%= profile.data.toString('base64') %>" alt="" class="avatar-photo">
+								<% if(profile == "") { %>
+									<img src="/images/noimage.png" width="70px" height="70px" alt="">
+								<% } else { %>
+									<img src="/frontend/images/supplier/<%= id %>/<%= profile %>" alt="" class="avatar-photo">
+								<% }%>
 								<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
 									<div class="modal-dialog modal-dialog-centered" role="document">
 										<div class="modal-content">
@@ -129,10 +133,10 @@
 					</div>
 				</div>
 			</div>
-      <%- include('../../Partials/Footer')%>
+      <%- include('../../partials/Footer')%>
 		</div>
 	</div>
 	<!-- js -->
-  <%- include('../../Partials/Script') %>
+  <%- include('../../partials/Script') %>
 </body>
 </html>

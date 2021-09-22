@@ -112,7 +112,11 @@
               <div class="col-md-8 col-sm-12">
 								<div class="form-group">
 									<label>ຮູບພາບ/Image</label>
-                  <img src="data:image/<%= image.contentType %>;base64, <%= image.data.toString('base64') %>" width="65px" height="65px" alt="">
+                  <% if(image == "") { %>
+										<img src="/images/noimage.png" width="60px" height="60px" alt="">
+										<% } else { %>
+										<img src="/frontend/images/vegetable/<%= id %>/<%= image %>" alt="" height="68px" width="68px">
+									<% }%>  
 								</div>
 							</div>
               <div class="col-md-4 col-sm-12">

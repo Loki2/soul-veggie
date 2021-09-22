@@ -30,10 +30,17 @@
 							<div class="progress-data">
 								<div id="chart"></div>
 							</div>
-							<div class="widget-data">
-								<div class="h4 mb-0">2020</div>
-								<div class="weight-600 font-14">Contact</div>
-							</div>
+							<% if(vegetables !== 'undefined') { %>
+								<div class="widget-data">
+									<div class="h4 mb-0"><%= vegetables.length %></div>
+									<div class="weight-600 font-14">ຊະນິດຜັກ ແລະ ໝາກໄມ້</div>
+								</div>
+								<% }else{ %>
+									<div class="widget-data">
+										<div class="h4 mb-0">0</div>
+										<div class="weight-600 font-14">ຊະນິດຜັກ ແລະ ໝາກໄມ້</div>
+									</div>
+							<% } %>							
 						</div>
 					</div>
 				</div>
@@ -43,10 +50,17 @@
 							<div class="progress-data">
 								<div id="chart2"></div>
 							</div>
-							<div class="widget-data">
-								<div class="h4 mb-0">400</div>
-								<div class="weight-600 font-14">Deals</div>
-							</div>
+							<% if(suppliers !== 'undefined'){ %>
+								<div class="widget-data">
+									<div class="h4 mb-0"><%= suppliers.length %></div>
+									<div class="weight-600 font-14">ຄູ່ຄ້າ ຫຼື ຜູ້ສະໜ່ອງ</div>
+								</div>
+								<% }else{ %>
+									<div class="widget-data">
+										<div class="h4 mb-0">0</div>
+										<div class="weight-600 font-14">ຄູ່ຄ້າ ຫຼື ຜູ້ສະໜ່ອງ</div>
+									</div>
+							<% } %>							
 						</div>
 					</div>
 				</div>
@@ -56,10 +70,17 @@
 							<div class="progress-data">
 								<div id="chart3"></div>
 							</div>
-							<div class="widget-data">
-								<div class="h4 mb-0">350</div>
-								<div class="weight-600 font-14">Campaign</div>
-							</div>
+							<% if(members !== 'undefined'){ %>
+								<div class="widget-data">
+									<div class="h4 mb-0"><%= members.length %></div>
+									<div class="weight-600 font-14">ສະມາຊິກ ແລະ ຕົວແທ່ນຈຳໜ່າຍ</div>
+								</div>
+								<% }else{ %>
+									<div class="widget-data">
+										<div class="h4 mb-0">0</div>
+										<div class="weight-600 font-14">ສະມາຊິກ ແລະ ຕົວແທ່ນຈຳໜ່າຍ</div>
+									</div>
+							<% } %>							
 						</div>
 					</div>
 				</div>
@@ -70,8 +91,8 @@
 								<div id="chart4"></div>
 							</div>
 							<div class="widget-data">
-								<div class="h4 mb-0">65.600.000,00 kip</div>
-								<div class="weight-600 font-14">Worth</div>
+								<div class="h4 mb-0">15.600.000,00 kip</div>
+								<div class="weight-600 font-14">ມູນຄ້າການຊື້-ຂາຍ</div>
 							</div>
 						</div>
 					</div>

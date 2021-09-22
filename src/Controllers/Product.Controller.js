@@ -90,14 +90,15 @@ module.exports.get_productId = async (req, res, next) => {
 
     const product = await Product.findById(id).populate({ path: 'category'});
 
-    qr.toDataURL(`http://localhost:5000/product/view/${id}`, (err, src) => {
+    qr.toDataURL(`https://soul-veggie.info/product/view/${id}`, (err, src) => {
       if(err){
         next(err)
       }else{
         res.render('admin/product/View', {
           product: product,
           src: src,
-          productId: id
+          image: product.image,
+          productId: product._id
         })
       }
     });
@@ -126,8 +127,8 @@ module.exports.get_updateProduct = async (req, res, next) => {
       price: product.price,
       unit: product.unit,
       status: product.status,
-      image: product.imageUrl,
-      productId: id
+      image: product.image,
+      productId: product._id
     });
   } catch (error) {
     next(error);
