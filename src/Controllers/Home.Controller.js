@@ -117,6 +117,7 @@ module.exports.get_BlogId = async (req, res, next) => {
 
     const blog = await Blog.findById(id).populate({ path: 'user', populate: { path: 'profiles'}});
 
+    const blogs = await Blog.find({}).populate({ path: 'user', populate: { path: 'profiles'}}).sort({ createdAt: -1 });
     res.render('blogs/View', {
       title: blog.title,
       subtitle: blog.subtitle,
@@ -124,7 +125,8 @@ module.exports.get_BlogId = async (req, res, next) => {
       image: blog.image,
       username: blog.user.profiles.firstname,
       created: blog.createdAt.toLocaleString(),
-      id: blog._id
+      id: blog._id,
+      blogs: blogs
     });
   } catch (error) {
     next(error)
@@ -156,7 +158,7 @@ module.exports.get_storeMembers = async (req, res, next) => {
 
     const memberProducts = await Member.findById(id).populate({ path: 'vegetables', populate: { path: 'vegetable', populate: {path: 'category'}}});
 
-    console.log("Member Product:", memberProducts)
+    // console.log("Member Product:", memberProducts)
 
     qr.toDataURL(`https://soul-veggie.info/members/${id}`, (err, src) => {
       if(err)
