@@ -32,7 +32,7 @@ app.use(fileUpload({
 
 //Init session
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET || 'SOME_OF_SUPER_SECRET',
   resave: false,
   saveUninitialized: false,
   cookie: {
