@@ -6,7 +6,7 @@ if(process.env.NODE_ENV !== 'production'){
 
 const http = require('http');
 const app = require('./src/App');
-const PORT = process.env.APP_PORT || 5000;
+const PORT = process.env.APP_PORT || 3000;
 
 
 //Create Server
