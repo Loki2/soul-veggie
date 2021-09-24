@@ -12,5 +12,5 @@ const PORT = process.env.APP_PORT || 5000;
 //Create Server
 const server = http.createServer(app);
 server.listen(PORT, () => {
-  console.log(`🚀 Server is running http://localhost:${PORT}`);
+  console.log('🚀 Server is running http://localhost:' + PORT);
 })
