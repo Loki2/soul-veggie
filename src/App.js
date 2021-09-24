@@ -53,8 +53,8 @@ app.use((req, res, next) => {
 
 
 //Connection to database --MongoDB
-mongoose.connect(process.env.DB_URI, {
-  dbName: process.env.DB_NAME,
+mongoose.connect(process.env.DB_URI || 'mongodb+srv://Loki2:rixnickz1135@cluster0.eiqpo.mongodb.net/soul-veggie?retryWrites=true&w=majority', {
+  dbName: process.env.DB_NAME || 'soul-veggie',
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
