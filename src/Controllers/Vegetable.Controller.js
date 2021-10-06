@@ -1,5 +1,3 @@
-// const path = require('path');
-// const fs = require('fs');
 const mkdirp = require("mkdirp");
 const qr = require('qrcode');
 const Category = require('../Models/Category');
