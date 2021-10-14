@@ -29,7 +29,7 @@ module.exports.get_admin = async (req, res, next) => {
 module.exports.get_allEmployee = async (req, res, next) => {
   try {
     const employee = await Profile.find().populate({ path: 'user' }).sort({ createdAt: -1 });
-    console.log("employees: ", employee);
+    // console.log("employees: ", employee);
     res.render('admin/employee/Employee', {
       employees: employee
     })

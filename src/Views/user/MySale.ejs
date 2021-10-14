@@ -17,9 +17,9 @@
           <table class="data-table table nowrap">
             <thead>
               <tr>
+                <th>Date</th>
                 <th>Items</th>
                 <th>Amount</th>
-                <th>Date</th>
                 <th>Paid Status</th>
                 <th class="datatable-nosort">Action</th>
               </tr>
@@ -27,13 +27,13 @@
             <tbody>
               <% sales.forEach(function(sale) { %>
                 <tr>
+                  <td><%= sale.createdAt.toLocaleDateString() %></td>
                   <td>
                     <% sale.items.forEach(function(item){ %>
                       <h6><%= item.vegetable.name %> <span> - Price: <%= item.price %> Kip</span></h6><span>Anount: <%= item.qty %></span>
                     <% }); %>
                   </td>
                   <td><%= parseFloat(sale.amount).toFixed(2)  %> kip</td>
-                  <td><%= sale.createdAt.toLocaleDateString() %></td>
                   <td><%= sale.isPaid %></td>
                   <td>
                     <div class="dropdown">

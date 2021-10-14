@@ -11,7 +11,7 @@ module.exports.get_userVegetable = async (req, res, next) => {
   try {
     const user = await User.find().populate({ path: 'profiles' }).sort({ createdAt: -1 });
 
-    console.log('User Profile: ', user)
+    // console.log('User Profile: ', user)
     res.render('manage/user/User', {
       users: user
     })
