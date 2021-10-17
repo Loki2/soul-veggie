@@ -21,5 +21,7 @@ router.get('/invoice/:id', authenticated, MyInfoController.get_myInvoice);
 router.get('/invoice-mobile/:id', authenticated, MyInfoController.get_myMobileInvoice);
 
 
+router.get('/carts/:id', authenticated, MyInfoController.get_deleteCartsProduct);
+
 
 module.exports = router;

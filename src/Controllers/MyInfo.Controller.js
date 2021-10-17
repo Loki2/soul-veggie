@@ -101,6 +101,9 @@ module.exports.post_addCart = async (req, res, next) => {
 }
 
 
+
+
+
 //User create Sale vegetable
 module.exports.post_createSale = async (req, res, next) => {
   try {
@@ -217,6 +220,19 @@ module.exports.get_myMobileInvoice = async (req, res, next) => {
       lastname: myProfile.profiles.lastname,
       created: saleItem.createdAt.toLocaleString()
     });
+  } catch (error) {
+    next(error)
+  }
+}
+
+
+module.exports.get_deleteCartsProduct = async (req, res, next) => {
+  try {
+    const {id} = req.params;
+
+    await Cart.findByIdAndRemove(id);
+
+    res.redirect('/my-info')
   } catch (error) {
     next(error)
   }
