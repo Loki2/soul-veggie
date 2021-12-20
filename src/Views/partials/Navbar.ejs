@@ -117,28 +117,28 @@
       </div>
     </div>
       <% if(typeof user.profiles !== 'undefined') { %>
-        <div class="user-info-dropdown">
-          <div class="dropdown">
-            <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-              <span class="user-icon">
-                <img src="" alt="">
-                <% if(user.profiles.profile == "") { %>
-                  <img src="/images/noimage.png" width="70px" height="70px" alt="">
-                <% } else { %>
-                  <img src="/frontend/images/users/profile/<%= user.profiles._id %>/<%= user.profiles.profile %>" width="70px" height="70px" alt="">
-                <% }%>
-              </span>
-              <span class="user-name">@<%= user.username %></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-              <a class="dropdown-item" href="#"><i class="dw dw-user1"></i> ຂໍ້ມູນສວນຕົວ</a>
-              <a class="dropdown-item" href="#"><i class="dw dw-settings2"></i> Setting</a>
-              <a class="dropdown-item" href="#"><i class="dw dw-help"></i> ຊ່ວຍເຫລືອ</a>
-              <a class="dropdown-item" href="/auth/logout"><i class="dw dw-logout"></i> ອອກຈາກລະບົບ</a>
+          <div class="user-info-dropdown">
+            <div class="dropdown">
+              <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                <span class="user-icon">
+                  <img src="" alt="">
+                  <% if(user.profiles.profile == "") { %>
+                    <img src="/images/noimage.png" width="70px" height="70px" alt="">
+                  <% } else { %>
+                    <img src="/frontend/images/users/profile/<%= user.profiles._id %>/<%= user.profiles.profile %>" width="70px" height="70px" alt="">
+                  <% }%>
+                </span>
+                <span class="user-name">@<%= user.username %></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                <a class="dropdown-item" href="#"><i class="dw dw-user1"></i> ຂໍ້ມູນສວນຕົວ</a>
+                <a class="dropdown-item" href="#"><i class="dw dw-settings2"></i> Setting</a>
+                <a class="dropdown-item" href="#"><i class="dw dw-help"></i> ຊ່ວຍເຫລືອ</a>
+                <a class="dropdown-item" href="/auth/logout"><i class="dw dw-logout"></i> ອອກຈາກລະບົບ</a>
+              </div>
             </div>
           </div>
-        </div>
-        <% } else { %>
+          <% } else { %>
           <div class="user-info-dropdown">
             <div class="dropdown">
               <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">

@@ -14,7 +14,6 @@ router.get('/sidebar-veggies', HomeController.get_allSidebarVeggie);
 
 router.get('/sidebar-veggies/:id', HomeController.get_VeggieId);
 
-
 router.get('/blogs', HomeController.get_allBlogs);
 
 router.get('/blogs/:id', HomeController.get_BlogId);

@@ -97,7 +97,7 @@ module.exports.post_addUser = async (req, res, next) => {
 
     await newUser.save();
 
-    //Create Token
+    //Create Token 
     const token = createToken(newUser._id);
 
     //Send Token to fronten

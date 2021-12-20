@@ -6,6 +6,7 @@ const authenticated = (req, res, next) => {
   const token = req.cookies.jwt;
 
   if(token) {
+     
     jwt.verify(token, process.env.APP_SECRET, async (error, decodedToken) => {
       if(error) {
         // res.status(401)
@@ -24,7 +25,7 @@ const authenticated = (req, res, next) => {
                                 populate: { path: 'items', populate: { path: 'vegetable'}},
                               })
                              .sort({ createdAt: -1 });
-        // console.log("currently user:", user)
+        console.log("currently user:", user) 
         res.locals.user = user;
         next();
       }
@@ -33,25 +34,6 @@ const authenticated = (req, res, next) => {
     res.redirect('/auth/signin');
   }
 }
-
-// const checkUser = (req, res, next) => {
-//   const token = req.cookies.jwt;
-
-//   if(token) {
-//     jwt.verify(token, process.env.APP_SECRET, async (error, decodedToken) => {
-//       if(error){
-//         console.log(error.message);
-//         res.locals.user === null;
-//         res.redirect('/auth/signin');
-//       }else{
-//         let user = await User.findById(decodedToken.id).populate({ path: 'profiles' });
-//         console.log("currently user:", user)
-//         res.locals.user = user;
-//         next();
-//       }
-//     })
-//   }
-// }
 
 
 //user Roles

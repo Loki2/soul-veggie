@@ -18,7 +18,7 @@ module.exports.get_Signin = async (req, res, next) => {
     next(error)
   }
 }
-
+ 
 module.exports.post_Signin = async (req, res, next) => {
   try {
     //const errors = validationResult(req);
@@ -56,7 +56,7 @@ module.exports.post_Signin = async (req, res, next) => {
           next();
         }else{
           let user = await User.findById(decodedToken.id);
-          console.log("currently Logged in user:", user)
+          // console.log("currently Logged in user:", user)
           if(user.role !== roles.admin) {
             res.redirect('/my-info');
           }else {
